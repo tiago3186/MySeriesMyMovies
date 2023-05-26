@@ -49,27 +49,29 @@
     {% endif %}
 
     {% if selected_movies %}
-    <h2>Minha Biblioteca:</h2>
-    <table>
-      <thead>
+  <h2>Minha Biblioteca:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Filme</th>
+        <th>Nota Geral</th>
+        <th>Nota do Usuário</th>
+        <th>Data de Lançamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for movie in selected_movies %}
         <tr>
-          <th>Nome do Filme</th>
-          <th>Nota Geral</th>
-          <th>Nota do Usuário</th>
-          <th>Data de Lançamento</th>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.average_rating }}</td>
+          <td>{{ movie.user_rating }}</td>
+          <td>{{ movie.release_date }}</td>
         </tr>
-      </thead>
-      <tbody>
-        {% for movie in selected_movies %}
-          <tr>
-            <td>{{ movie.title }}</td>
-            <td>{{ movie.average_rating }}</td>
-            <td>{{ movie.user_rating }}</td>
-            <td>{{ movie.release_date }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Nenhum filme encontrado na biblioteca.</p>
+{% endif %}
 </body>
 </html>

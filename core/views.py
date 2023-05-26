@@ -1,18 +1,24 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import requests
+from core.models import Movie
 
 API_KEY = '1e440f65016c5cbd7a4d5712968422a2'
 
 @login_required
 def homepage(request):
-    return render(request, 'main.html')
+    selected_movies = Movie.objects.filter(user=request.user)
+
+    context = {'selected_movies': selected_movies}
+    return render(request, 'main.html', context)
+
+from django.shortcuts import redirect
 
 @login_required
 def search_movie(request):
     if request.method == 'POST':
         search_query = request.POST.get('search_query')
-        print(search_query)   
+        print(search_query)
 
         # Realize a chamada à API do The Movie DB com o termo de busca
         response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={search_query}')
@@ -28,7 +34,7 @@ def search_movie(request):
 
         context = {'results': results, 'search_query': search_query}
         return render(request, 'main.html', context)
-    
+
     if request.method == 'GET' and 'selected_movies' in request.GET:
         selected_movie_ids = request.GET.getlist('selected_movies')
         selected_movies = []
@@ -46,6 +52,17 @@ def search_movie(request):
             selected_movies.append(movie)
 
         context = {'selected_movies': selected_movies}
-        return render(request, 'main.html', context)
+        
+        # Salvar os filmes na biblioteca antes de redirecionar
+        for movie in selected_movies:
+            Movie.objects.create(
+                title=movie['title'],
+                release_date=movie['release_date'],
+                average_rating=movie['average_rating'],
+                user_rating=movie['user_rating'],
+                user=request.user
+            )
+
+        return redirect('main')
 
     return render(request, 'main.html')
