@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 import requests
 from core.models import Movie
 
-API_KEY = '1e440f65016c5cbd7a4d5712968422a2'
+API_KEY = 'YOUR API KEY HERE'
 
 @login_required
 def homepage(request):
