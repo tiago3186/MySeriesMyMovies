@@ -51,6 +51,16 @@ def search_movie(request):
             selected_movies.append(movie)
 
         context = {'selected_movies': selected_movies}
+        
+        # Salvar os filmes na biblioteca antes de redirecionar
+        for movie in selected_movies:
+                Movie.objects.create(
+                    title=movie['title'],
+                    release_date=movie['release_date'],
+                    average_rating=movie['average_rating'],
+                    user_rating=movie['user_rating'],
+                    user=request.user
+                )
 
         return redirect('main')
 
