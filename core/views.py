@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import requests
 from core.models import Movie
+from django.shortcuts import redirect
+from django.conf import settings
 
-API_KEY = 'YOUR API KEY HERE'
+API_KEY = settings.API_KEY
 
 @login_required
 def homepage(request):
@@ -11,8 +13,6 @@ def homepage(request):
 
     context = {'selected_movies': selected_movies}
     return render(request, 'main.html', context)
-
-from django.shortcuts import redirect
 
 @login_required
 def search_movie(request):
