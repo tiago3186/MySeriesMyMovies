@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 import requests
 from core.models import Movie
-from django.shortcuts import redirect
 from django.conf import settings
 
 API_KEY = settings.API_KEY
@@ -52,17 +51,20 @@ def search_movie(request):
             selected_movies.append(movie)
 
         context = {'selected_movies': selected_movies}
-        
-        # Salvar os filmes na biblioteca antes de redirecionar
-        for movie in selected_movies:
-            Movie.objects.create(
-                title=movie['title'],
-                release_date=movie['release_date'],
-                average_rating=movie['average_rating'],
-                user_rating=movie['user_rating'],
-                user=request.user
-            )
 
         return redirect('main')
 
     return render(request, 'main.html')
+
+@login_required
+def update_user_ratings(request):
+    if request.method == 'POST':
+        movie_ids = request.POST.getlist('movie_id')
+        user_ratings = request.POST.getlist('user_rating')
+
+        for movie_id, user_rating in zip(movie_ids, user_ratings):
+            movie = Movie.objects.get(id=movie_id)
+            movie.user_rating = user_rating
+            movie.save()
+
+    return redirect('main')

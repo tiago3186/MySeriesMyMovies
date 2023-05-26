@@ -49,27 +49,32 @@
     {% endif %}
 
     {% if selected_movies %}
-  <h2>Minha Biblioteca:</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Nome do Filme</th>
-        <th>Nota Geral</th>
-        <th>Nota do Usuário</th>
-        <th>Data de Lançamento</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for movie in selected_movies %}
-        <tr>
-          <td>{{ movie.title }}</td>
-          <td>{{ movie.average_rating }}</td>
-          <td>{{ movie.user_rating }}</td>
-          <td>{{ movie.release_date }}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+    <form action="{% url 'update_ratings' %}" method="POST">
+      {% csrf_token %}
+      <h2>Minha Biblioteca:</h2>
+      <table>
+          <thead>
+              <tr>
+                  <th>Nome do Filme</th>
+                  <th>Nota Geral</th>
+                  <th>Nota do Usuário</th>
+                  <th>Data de Lançamento</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for movie in selected_movies %}
+                  <tr>
+                      <td>{{ movie.title }}</td>
+                      <td>{{ movie.average_rating }}</td>
+                      <td><input type="number" name="user_rating" value="{{ movie.user_rating }}" step="0.1"></td>
+                      <td>{{ movie.release_date }}</td>
+                      <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <button type="submit">Salvar Avaliações</button>
+  </form>
 {% else %}
   <p>Nenhum filme encontrado na biblioteca.</p>
 {% endif %}

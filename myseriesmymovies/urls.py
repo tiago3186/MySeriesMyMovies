@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import homepage, search_movie
+from core.views import homepage, search_movie, update_user_ratings
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('main/', homepage, name='main'),
     path('', LoginView.as_view(template_name='index.html', success_url='/main/'), name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
-    path('search/', search_movie, name='search')
+    path('search/', search_movie, name='search'),
+    path('update_ratings/', update_user_ratings, name='update_ratings'),
 ]
