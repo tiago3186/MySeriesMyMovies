@@ -21,25 +21,55 @@
     </form>
 
     {% if results %}
-  <h2>Resultados:</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Nome do Filme</th>
-        <th>Nota</th>
-        <th>Data de Lançamento</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for result in results %}
+      <h2>Resultados:</h2>
+      <form action="/search/" method="GET">
+        {% csrf_token %}
+        <table>
+          <thead>
+            <tr>
+              <th>Nome do Filme</th>
+              <th>Nota</th>
+              <th>Data de Lançamento</th>
+              <th>Selecionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in results %}
+              <tr>
+                <td>{{ result.title }}</td>
+                <td>{{ result.vote_average }}</td>
+                <td>{{ result.release_date }}</td>
+                <td><input type="checkbox" name="selected_movies" value="{{ result.id }}"></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <button type="submit">Adicionar à minha biblioteca</button>
+      </form>
+    {% endif %}
+
+    {% if selected_movies %}
+    <h2>Minha Biblioteca:</h2>
+    <table>
+      <thead>
         <tr>
-          <td>{{ result.title }}</td>
-          <td>{{ result.vote_average }}</td>
-          <td>{{ result.release_date }}</td>
+          <th>Nome do Filme</th>
+          <th>Nota Geral</th>
+          <th>Nota do Usuário</th>
+          <th>Data de Lançamento</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% endif %}
+      </thead>
+      <tbody>
+        {% for movie in selected_movies %}
+          <tr>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.average_rating }}</td>
+            <td>{{ movie.user_rating }}</td>
+            <td>{{ movie.release_date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
 </body>
 </html>
