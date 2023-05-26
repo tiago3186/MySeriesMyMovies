@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main</title>
+</head>
+<body>
+    <h1>Login efetuado corretamente {{ user.username }}</h1>
+
+    <!-- Botão de Logout -->
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+    <h1>Busca de Filmes</h1>
+    <form action="/search/" method="POST">
+        {% csrf_token %}
+        <label for="title">Digite o título do filme:</label>
+        <input type="text" id="title" name="search_query" required>
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if results %}
+  <h2>Resultados:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Filme</th>
+        <th>Nota</th>
+        <th>Data de Lançamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in results %}
+        <tr>
+          <td>{{ result.title }}</td>
+          <td>{{ result.vote_average }}</td>
+          <td>{{ result.release_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+</body>
+</html>
