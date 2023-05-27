@@ -26,5 +26,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('search/', search_movie, name='search'),
     path('update_ratings/', update_user_ratings, name='update_ratings'),
-    path('delete_movie/<int:movie_id>/', delete_movie, name='delete_movie')
+    path('delete_movie/<int:movie_id>/', delete_movie, name='delete_movie'),    
 ]

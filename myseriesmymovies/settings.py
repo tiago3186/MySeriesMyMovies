@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'myseriesmymovies.middleware.RedirectToMainMiddleware',
 ]
 
 ROOT_URLCONF = 'myseriesmymovies.urls'
