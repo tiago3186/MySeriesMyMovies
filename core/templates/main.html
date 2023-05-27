@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <title>Main</title>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+     <!-- CSS personalizado -->
+     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <h1>Bem vindo ao MySeriesMyMovies {{ user.username }}</h1>
-
+  <nav class="navbar">
+    <div class="navbar-logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+        <div class="navbar-brand">
+            MySeriesMyMovies
+        </div>
+    </div>
+    <div>        
     <!-- Botão de Logout -->
     <form action="{% url 'logout' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-    </form>
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+  </form>
+    </div>
+</nav>
+    <div class="caixa">
+    <h3>Bem vindo {{ user.username }}</h3>
+    </div>
 
+    <div class="caixa"></div>
     <h2>Busca de Filmes</h2>
     <form action="/search/" method="POST">
         {% csrf_token %}
@@ -19,7 +36,7 @@
         <input type="text" id="title" name="search_query" required>
         <input type="submit" value="Buscar">
     </form>
-
+    
     {% if results %}
       <h2>Resultados:</h2>
       <form action="/search/" method="GET">
@@ -47,7 +64,8 @@
         <button type="submit">Adicionar à minha biblioteca</button>
       </form>
     {% endif %}
-
+    </div>
+    <div class="caixa"> 
     {% if selected_movies %}
     <form action="{% url 'update_ratings' %}" method="POST">
       {% csrf_token %}
@@ -80,7 +98,8 @@
 {% else %}
   <p>Nenhum filme encontrado na biblioteca.</p>
 {% endif %}
-
+</div>
+<div class="caixa">
 {% if friend_activities %}
   <h2>Atividade dos Amigos:</h2>
   <table>
@@ -106,6 +125,7 @@
       </tbody>
   </table>
 {% endif %}
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
