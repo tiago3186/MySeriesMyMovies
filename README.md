@@ -34,3 +34,4 @@ Sugestões e contribuições são bem vindas. É um projeto aberto, se quiser da
 - Além de nota dá pra colocar avaliações em formato de texto de cada usuário.  
 - Colocar imagens das séries e filmes.  
 - Melhorar o layout do HTML e o CSS.  
+- Dá pra ir além e ser uma rede social sobre recomendações de filmes, cinemas, eventos, etc.  
