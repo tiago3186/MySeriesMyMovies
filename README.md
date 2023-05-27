@@ -29,3 +29,6 @@ Você pode clonar esse repositório e instalar as dependências necessárias. Ap
 ### Contribuições
 Sugestões e contribuições são bem vindas. É um projeto aberto, se quiser dar fork ou abrir uma branch, fique totalmente à vontade.  
 
+### Limitações e coisas pra acrescentar
+- Atualmente essa API só traz dados de filmes. Falta pensar num jeito de trazer dados de séries, nem que seja de outra API.  
+- Além de nota dá pra colocar avaliações em formato de texto de cada usuário.  
