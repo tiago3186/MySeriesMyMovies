@@ -32,3 +32,5 @@ Sugestões e contribuições são bem vindas. É um projeto aberto, se quiser da
 ### Limitações e coisas pra acrescentar
 - Atualmente essa API só traz dados de filmes. Falta pensar num jeito de trazer dados de séries, nem que seja de outra API.  
 - Além de nota dá pra colocar avaliações em formato de texto de cada usuário.  
+- Colocar imagens das séries e filmes.  
+- Melhorar o layout do HTML e o CSS.  
