@@ -4,7 +4,7 @@
     <title>Main</title>
 </head>
 <body>
-    <h1>Login efetuado corretamente {{ user.username }}</h1>
+    <h1>Bem vindo ao MySeriesMyMovies {{ user.username }}</h1>
 
     <!-- Botão de Logout -->
     <form action="{% url 'logout' %}" method="POST">
@@ -12,7 +12,7 @@
         <button type="submit">Logout</button>
     </form>
 
-    <h1>Busca de Filmes</h1>
+    <h2>Busca de Filmes</h2>
     <form action="/search/" method="POST">
         {% csrf_token %}
         <label for="title">Digite o título do filme:</label>
@@ -80,5 +80,32 @@
 {% else %}
   <p>Nenhum filme encontrado na biblioteca.</p>
 {% endif %}
+
+{% if friend_activities %}
+  <h2>Atividade dos Amigos:</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Nome do Filme</th>
+              <th>Nota Geral</th>
+              <th>Nota do Usuário</th>
+              <th>Usuário</th>
+              <th>Data de Lançamento</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for activity in friend_activities %}
+              <tr>
+                  <td>{{ activity.title }}</td>
+                  <td>{{ activity.average_rating }}</td>
+                  <td>{{ activity.user_rating }}</td>
+                  <td>{{ activity.user.username }}</td>
+                  <td>{{ activity.release_date }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% endif %}
+
 </body>
 </html>

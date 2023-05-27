@@ -9,8 +9,12 @@ API_KEY = settings.API_KEY
 @login_required
 def homepage(request):
     selected_movies = Movie.objects.filter(user=request.user)
+    friend_activities = Movie.objects.exclude(user=request.user).select_related('user')
 
-    context = {'selected_movies': selected_movies}
+    context = {
+        'selected_movies': selected_movies,
+        'friend_activities': friend_activities
+    }
     return render(request, 'main.html', context)
 
 @login_required
