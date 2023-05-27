@@ -12,14 +12,15 @@ Esta é uma aplicação web desenvolvido em Django que permite ao usuário adici
 Você faz login:  
 ![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/1542e481-aefa-485a-8b18-2420b4960e9d)
 
-Pode pesquisar filmes e adicioná-los à sua biblioteca, atribuindo uma nota. Pode também excluir filmes e fazer logout:  
-![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/d99ad880-32f2-49f5-808f-476022e5563c)
 
-Ao alterar a nota, deve salvar as alterações:  
-![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/55cb837a-6dcd-4e99-9bdb-a48cacfb2dac)
+Pode pesquisar filmes e adicioná-los à sua biblioteca, atribuindo uma nota. Pode também excluir filmes e fazer logout:    
+![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/530a5ee3-c92d-4e3c-9a5f-e0a2dd9bfe31)
+![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/c13df8af-6d90-4add-9933-1fd5c73ee68f)
+
 
 Pode ver as atividades e notas dos outros usuários:  
-![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/952bed14-52db-4c4b-a097-c2024255ab13)
+![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/68fbe908-235c-4f6e-be87-50a5891177fb)
+
 
 ### Para baixar
 Você pode clonar esse repositório e instalar as dependências necessárias. Após isso você pode executar com um:  
