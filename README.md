@@ -15,6 +15,9 @@ Você faz login:
 Pode pesquisar filmes e adicioná-los à sua biblioteca, atribuindo uma nota. Pode também excluir filmes e fazer logout:  
 ![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/d99ad880-32f2-49f5-808f-476022e5563c)
 
+Ao alterar a nota, deve salvar as alterações:  
+![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/55cb837a-6dcd-4e99-9bdb-a48cacfb2dac)
+
 Pode ver as atividades e notas dos outros usuários:  
 ![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/952bed14-52db-4c4b-a097-c2024255ab13)
 
