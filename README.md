@@ -1,5 +1,5 @@
 ## MySeriesMyMovies
-Este é um aplicativo web desenvolvido em Django que permite ao usuário adicionar filmes e séries à sua biblioteca pessoal, dar notas e compartilhar suas avaliações com os amigos.
+Esta é uma aplicação web desenvolvido em Django que permite ao usuário adicionar filmes e séries à sua biblioteca pessoal, dar notas e compartilhar suas avaliações com os amigos.
 
 ### Funcionalidades
 - Autenticação de usuários: Os usuários podem se cadastrar, fazer login e logout para acessar suas bibliotecas pessoais.
