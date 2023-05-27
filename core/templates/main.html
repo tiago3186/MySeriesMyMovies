@@ -59,6 +59,7 @@
                   <th>Nota Geral</th>
                   <th>Nota do Usuário</th>
                   <th>Data de Lançamento</th>
+                  <th>Ações</th>
               </tr>
           </thead>
           <tbody>
@@ -68,6 +69,7 @@
                       <td>{{ movie.average_rating }}</td>
                       <td><input type="number" name="user_rating" value="{{ movie.user_rating }}" step="0.1"></td>
                       <td>{{ movie.release_date }}</td>
+                      <td><button formaction="{% url 'delete_movie' movie.id %}">Excluir</button></td>
                       <input type="hidden" name="movie_id" value="{{ movie.id }}">
                   </tr>
               {% endfor %}

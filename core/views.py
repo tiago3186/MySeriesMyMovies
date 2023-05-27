@@ -78,3 +78,12 @@ def update_user_ratings(request):
             movie.save()
 
     return redirect('main')
+
+@login_required
+def delete_movie(request, movie_id):
+    movie = Movie.objects.get(id=movie_id)
+
+    if movie.user == request.user:
+        movie.delete()
+
+    return redirect('main')
