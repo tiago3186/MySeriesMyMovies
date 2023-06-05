@@ -8,7 +8,7 @@ Esta é uma aplicação web desenvolvido em Django que permite ao usuário adici
 - Compartilhar avaliações: Os usuários podem compartilhar suas avaliações com os amigos, permitindo que eles vejam os títulos adicionados, as notas atribuídas e as avaliações escritas.
 
 
-### Uso
+### Como usar
 Você faz login:  
 ![image](https://github.com/tiago3186/MySeriesMyMovies/assets/132753395/1542e481-aefa-485a-8b18-2420b4960e9d)
 
